@@ -20,6 +20,12 @@
             src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
             integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
             crossorigin="anonymous"></script>
+        <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
         <style>
     /*  import google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
@@ -777,31 +783,125 @@ section .title::after{
     text-align: center;
     overflow: hidden;
     transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
  .teams .carousel .card .box{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.teams .carousel .card img{
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
 }
 
 .teams .carousel .card .text{
     font-size: 25px;
     font-weight: 500;
-    margin: 10px 0 7px 0;
+    margin: 10px 0;
+    color: #fff;
 }
-.teams .carousel .card img{
-    height: 150px;
-    width: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 5px solid crimson;
+
+.teams .carousel .card p{
+    color: #ccc;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 15px 0;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    justify-content: center;
+}
+
+.tech-tag {
+    background: rgba(220, 20, 60, 0.1);
+    color: crimson;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+.project-links .project {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 8px 16px;
+    border-radius: 25px;
     transition: all 0.3s ease;
+    min-width: 120px;
+    justify-content: center;
 }
-.teams .carousel .card:hover img{
-    border-color: #fff;
+
+.project-links .project:hover {
+    transform: translateY(-2px);
+}
+
+.project-links .project i {
+    font-size: 1.1em;
+}
+
+/* Owl Carousel Customization */
+.owl-carousel .owl-stage {
+    display: flex;
+    align-items: stretch;
+}
+
+.owl-carousel .owl-item {
+    display: flex;
+    height: 100%;
+}
+
+.owl-carousel .owl-item > div {
+    width: 100%;
+    display: flex;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .teams .carousel .card {
+        padding: 20px;
+    }
+
+    .teams .carousel .card img {
+        height: 180px;
+    }
+
+    .teams .carousel .card .text {
+        font-size: 20px;
+    }
+
+    .project-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .project-links .project {
+        width: 100%;
+    }
 }
 .owl-dots{
     text-align: center;
@@ -1296,25 +1396,205 @@ footer .wave#wave4
         <div id="preloader"></div>
         <nav class="navbar">
             <div class="max-width">
-                <img
-                    src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1725528708/SSClogo-removebg-preview_3_nrcgl5_2_xpd5vc.png"
-                    id="logo" />
-                <div class="logo"><a href="#">Student Service <span
-                            class="mr-2">
-                            Community</span></a></div>
+                
                 <ul class="menu">
                     <li><a href="#home" class="menu-btn">Home</a></li>
                     <li><a href="#about" class="menu-btn">About</a></li>
                     <li><a href="#services" class="menu-btn">Services</a></li>
+                    <li><a href="#achievements" class="menu-btn">Achievements</a></li>
+                    <li><a href="#leadership" class="menu-btn">Leadership</a></li>
                     <li><a href="#skills" class="menu-btn">Skills</a></li>
                     <li><a href="#teams" class="menu-btn">Teams</a></li>
                     <li><a href="#contact" class="menu-btn">Contact</a></li>
                 </ul>
+                <!-- <div class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </div>
                 <div class="menu-btn">
                     <i class="fas fa-bars"></i>
-                </div>
+                </div> -->
             </div>
         </nav>
+
+        <style>
+            :root {
+                /* Dark Theme Colors */
+                --dark-bg: #0a0a0a;
+                --dark-card: #111111;
+                --dark-text: #ffffff;
+                --dark-text-secondary: #cccccc;
+                --gold-primary: #ffd700;
+                --gold-secondary: #daa520;
+                --gold-accent: #b8860b;
+                --gold-hover: #ffdf00;
+                --card-border: rgba(255, 215, 0, 0.1);
+                --card-shadow: rgba(0, 0, 0, 0.3);
+                
+                /* Light Theme Colors */
+                --light-bg: #ffffff;
+                --light-card: #f5f5f5;
+                --light-text: #333333;
+                --light-text-secondary: #666666;
+                
+                /* Current Theme (default dark) */
+                --bg-color: var(--dark-bg);
+                --card-bg: var(--dark-card);
+                --text-color: var(--dark-text);
+                --text-secondary: var(--dark-text-secondary);
+                --primary-color: var(--gold-primary);
+                --secondary-color: var(--gold-secondary);
+                --accent-color: var(--gold-accent);
+                --hover-color: var(--gold-hover);
+            }
+
+            [data-theme="light"] {
+                --bg-color: var(--light-bg);
+                --card-bg: var(--light-card);
+                --text-color: var(--light-text);
+                --text-secondary: var(--light-text-secondary);
+            }
+
+            body {
+                background-color: var(--bg-color);
+                color: var(--text-color);
+            }
+
+            .theme-toggle {
+                position: relative;
+                background: var(--card-bg);
+                border: 2px solid var(--primary-color);
+                color: var(--primary-color);
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin-left: 15px;
+            }
+
+            .theme-toggle:hover {
+                background: var(--primary-color);
+                color: var(--bg-color);
+            }
+
+            .navbar {
+                background: var(--card-bg);
+                box-shadow: 0 2px 10px var(--card-shadow);
+            }
+
+            .navbar .logo a {
+                color: var(--text-color);
+            }
+
+            .navbar .logo a span {
+                color: var(--primary-color);
+            }
+
+            .navbar .menu li a {
+                color: var(--text-color);
+            }
+
+            .navbar .menu li a:hover {
+                color: var(--primary-color);
+            }
+
+            .navbar.sticky {
+                background: var(--card-bg);
+            }
+
+            .teams .carousel .card {
+                background: var(--card-bg);
+                border: 1px solid var(--card-border);
+            }
+
+            .tech-tag {
+                background: rgba(255, 215, 0, 0.1);
+                color: var(--primary-color);
+                border: 1px solid var(--primary-color);
+            }
+
+            .project-links .project {
+                border: 2px solid var(--primary-color);
+                color: var(--primary-color);
+            }
+
+            .project-links .project:hover {
+                background: var(--primary-color);
+                color: var(--bg-color);
+            }
+
+            /* Mobile First Styles */
+            .max-width {
+                width: 100%;
+                padding: 0 20px;
+                margin: 0 auto;
+            }
+
+            @media (min-width: 768px) {
+                .max-width {
+                    max-width: 720px;
+                    padding: 0 30px;
+                }
+            }
+
+            @media (min-width: 992px) {
+                .max-width {
+                    max-width: 960px;
+                }
+                
+                .navbar .menu {
+                    position: static;
+                    height: auto;
+                    width: auto;
+                    background: none;
+                    padding-top: 0;
+                }
+
+                .navbar .menu li {
+                    display: inline-block;
+                    margin: 0 15px;
+                }
+
+                .menu-btn {
+                    display: none;
+                }
+            }
+
+            @media (min-width: 1200px) {
+                .max-width {
+                    max-width: 1140px;
+                }
+            }
+
+            
+        </style>
+
+        <script>
+            // Theme Toggle Functionality
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+            });
+
+            function updateThemeIcon(theme) {
+                themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+        </script>
 
         <!-- home section start -->
         <section class="home" id="home">
@@ -1357,24 +1637,16 @@ footer .wave#wave4
                         <div class="text">I'm Maheswaram Subrahmanyam. and
                             I'm a <span
                                 class="typing-2"></span></div>
-                        <p> Founder of the Student Service Community (SSC),
-                            committed to training students through free
-                            services. Aspiring software developer with a strong
-                            foundation in computer science, aiming to leverage
-                            skills in web development, machine learning, to
-                            contribute to innovative projects and drive
-                            technological advancements. A dedicated Computer
-                            Science student experienced in Python, Java, C,
-                            HTML, CSS, and JavaScript. Passionate about creating
-                            user-friendly and efficient applications, with
-                            hands-on experience in developing web solutions, and
-                            implementing machine learning models. Seeking
-                            opportunities in dynamic environments to grow
-                            professionally and make significant contributions.
+                        <!--<p> Currently interning as a MERN Stack Developer at <span class="link2">Zithara.Ai</span>, while also working as a Python & Data Analytics Trainer at <span class="link2">Risk Guard Enterprise Solutions</span> and serving as an IT Intern in the X-Ray Department at <span class="link2">INDO-MIM Limited</span>, Bangalore. These roles have enriched my expertise across web development, data analytics, and IT operations.
+                            Founder of the <span class="link2">Student Service Community (SSC)</span>, a platform dedicated to offering free tech training to students. I am an aspiring software developer with a strong foundation in computer science, skilled in Python, Java, C, HTML , CSS,JavaScript.
+                            With hands-on experience in building user-friendly web solutions and implementing machine learning models, I’m passionate about driving technological innovation and continuously seeking dynamic opportunities to grow professionally and make meaningful contributions.
+                        </p> -->
+                        <p>Founder of the <span class="link2">Student Service Community (SSC)</span>, a platform dedicated to offering free tech training to students. I am an aspiring software developer with a strong foundation in computer science, skilled in Python, Java, C, HTML, CSS, JavaScript. With hands-on experience in building user-friendly web solutions and implementing machine learning models, I’m passionate about driving technological innovation and continuously seeking dynamic opportunities to grow professionally and make meaningful contributions.
+                            Currently interning as a MERN Stack Developer at <span class="link2">Zithara.Ai</span>, while also working as a Python & Data Analytics Trainer at <span class="link2">Risk Guard Enterprise Solutions</span> and serving as an IT Intern in the X-Ray Department at <span class="link2">INDO-MIM Limited</span>, Bangalore. These roles have enriched my expertise across web development, data analytics, and IT operations.
                         </p>
                         <a
-                            href="https://res.cloudinary.com/dk6egvuyy/image/upload/v1723160778/subrahmanyam_resume_page-0001_fawktu.jpg"
-                            download="https://res.cloudinary.com/dk6egvuyy/image/upload/v1723160778/subrahmanyam_resume_page-0001_fawktu.jpg">Download
+                            href="https://drive.google.com/file/d/1Iub94EP1t5UZLS9oLWpdSkNdsA0Dwi-D/view?usp=sharing"
+                            download="https://drive.google.com/file/d/1Iub94EP1t5UZLS9oLWpdSkNdsA0Dwi-D/view?usp=sharing">Download
                             CV</a>
                     </div>
                 </div>
@@ -1384,171 +1656,925 @@ footer .wave#wave4
         <!-- services section start -->
         <section class="services" id="services">
             <div class="max-width">
-                <h2 class="title">My services</h2>
+                <h2 class="title">Professional Journey</h2>
                 <div class="serv-content">
                 </div>
             </div>
-            <div class="container">
-                <div class="box m-1 mb-4">
-
-                    <div class="content ">
-                        <h1>Python Trainer</h1>
-                        <span>DP Instute</span>
-                        <h6>Working as Python Teacher at DP Instute
-                            Gudivada</h6>
-
-                        <p class="font-size">With two years of experience as a
-                            Python teacher at
-                            DP Institute and Maheswaram Learnings, I trained 10+
-                            batches of students, fostering strong programming
-                            skills. Teaching in a positive environment brings me
-                            joy. Challenges and assignments effectively enhance
-                            student learning.
-                        </p>
-
+            <style>
+                .experience-container {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                    gap: 2rem;
+                    padding: 2rem;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                }
+                
+                .experience-card {
+                    background: rgba(255, 255, 255, 0.05);
+                    border-radius: 20px;
+                    padding: 2rem;
+                    position: relative;
+                    overflow: hidden;
+                    transition: all 0.3s ease;
+                    backdrop-filter: blur(10px);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                }
+                
+                .experience-card::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+                    transform: translateX(-100%);
+                    transition: 0.5s;
+                }
+                
+                .experience-card:hover::before {
+                    transform: translateX(100%);
+                }
+                
+                .experience-card:hover {
+                    transform: translateY(-10px);
+                    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+                }
+                
+                .experience-header {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 1.5rem;
+                }
+                
+                .experience-icon {
+                    width: 60px;
+                    height: 60px;
+                    background: crimson;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 1rem;
+                    font-size: 1.5rem;
+                    color: white;
+                }
+                
+                .experience-title {
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    color: #fff;
+                    margin-bottom: 0.5rem;
+                }
+                
+                .experience-company {
+                    font-size: 1.1rem;
+                    color: crimson;
+                    font-weight: 500;
+                    margin-bottom: 0.5rem;
+                }
+                
+                .experience-date {
+                    font-size: 0.9rem;
+                    color: #888;
+                    margin-bottom: 1rem;
+                }
+                
+                .experience-description {
+                    color: #ccc;
+                    line-height: 1.6;
+                    margin-bottom: 1.5rem;
+                }
+                
+                .experience-links {
+                    display: flex;
+                    gap: 1rem;
+                }
+                
+                .experience-link {
+                    padding: 0.5rem 1rem;
+                    background: transparent;
+                    border: 2px solid crimson;
+                    color: crimson;
+                    border-radius: 25px;
+                    text-decoration: none;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                }
+                
+                .experience-link:hover {
+                    background: crimson;
+                    color: white;
+                }
+                
+                .experience-badge {
+                    position: absolute;
+                    top: 1rem;
+                    right: 1rem;
+                    background: rgba(220, 20, 60, 0.2);
+                    color: crimson;
+                    padding: 0.3rem 0.8rem;
+                    border-radius: 15px;
+                    font-size: 0.8rem;
+                    font-weight: 500;
+                }
+            </style>
+            
+            <div class="experience-container">
+                <div class="experience-card">
+                    <div class="experience-badge">Current Role</div>
+                    <div class="experience-header">
+                        <div class="experience-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div>
+                            <h3 class="experience-title">Core Python & Data Analytics Trainer</h3>
+                            <div class="experience-company">Risk Guard Enterprise Solutions</div>
+                            <div class="experience-date">March 2025 - Present</div>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        Leading comprehensive Python and data analytics training programs for 100+ learners. 
+                        Designing hands-on projects and providing personalized mentorship to develop job-ready skills. 
+                        Creating engaging curriculum and training materials for effective learning outcomes.
+                    </p>
+                    <div class="experience-links">
+                        <a href="https://www.linkedin.com/posts/maheswaram-subrahmanyam-361238275_core-python-and-data-analytics-trainer-activity-7335660842463481856-t0k-?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEMh0vkBOxt4pVgEjuLukfaFJuVEmwysC20" class="experience-link" target="_blank">
+                            <i class="fas fa-file-alt"></i> Joining Letter
+                        </a>
+                        <a href="https://drive.google.com/drive/folders/1DBmwnT-5V3DAnTEMJeXmxqjcth8NVrxc?usp=sharing" class="experience-link" target="_blank">
+                            <i class="fas fa-video"></i> Training Videos
+                        </a>
                     </div>
                 </div>
-                <div class="box mb-5 mt-1">
 
-                    <div class="content">
-                        <h1>SSC Orgnisation</h1>
-                        <span>STUDENT SERVICE COMMUNITY</span>
-                        <h6>Trained 1000+ students through SSC.</h6>
+                <div class="experience-card">
+                    <div class="experience-badge">Current Role</div>
+                    <div class="experience-header">
+                        <div class="experience-icon">
+                            <i class="fas fa-laptop-medical"></i>
+                        </div>
+                        <div>
+                            <h3 class="experience-title">X-Ray Department Intern</h3>
+                            <div class="experience-company">INDO-MIM Limited, Bangalore</div>
+                            <div class="experience-date">March 2025 - Present</div>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        Supporting IT operations in the X-Ray department through process automation and documentation. 
+                        Implementing innovative IT solutions to enhance operational efficiency and streamline technical workflows.
+                    </p>
+                </div>
 
-                        <p class="font-size">Through Community I've
-                            be conducted numerous webinars, seminars, and
-                            workshops on technologies like ML, Data Science,
-                            Python, and resent technologies. These events offer
-                            free training and skill development to students
-                            across various colleges. SSC continues to empower
-                            students with hands-on experience in tech
-                            fields.
+                <div class="experience-card">
+                    <div class="experience-badge">Leadership</div>
+                    <div class="experience-header">
+                        <div class="experience-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div>
+                            <h3 class="experience-title">Founder - Student Service Community</h3>
+                            <div class="experience-company">Community Leadership</div>
+                            <div class="experience-date">Ongoing Initiative</div>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        Leading a community of 1500+ students through comprehensive tech training programs. 
+                        Conducting workshops on Machine Learning, Data Science, and Python. 
+                        Empowering students with hands-on experience and free skill development opportunities.
+                    </p>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-badge">Volunteer</div>
+                    <div class="experience-header">
+                        <div class="experience-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <div>
+                            <h3 class="experience-title">Volunteer - Student Union for Nation</h3>
+                            <div class="experience-company">Community Service</div>
+                            <div class="experience-date">Krishna District</div>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        Contributing to student growth initiatives through various social services. 
+                        Organizing food donations, student adoption programs, and educational support. 
+                        Coordinating community events to make a positive impact in the lives of those in need.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- achievements section start -->
+        <section class="achievements" id="achievements">
+            <div class="max-width">
+                <h2 class="title">Achievements & Recognition</h2>
+                <style>
+                    .achievements-container {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                        gap: 2rem;
+                        padding: 2rem;
+                        max-width: 1200px;
+                        margin: 0 auto;
+                    }
+
+                    .achievement-card {
+                        background: rgba(255, 255, 255, 0.05);
+                        border-radius: 20px;
+                        padding: 2rem;
+                        position: relative;
+                        overflow: hidden;
+                        transition: all 0.3s ease;
+                        backdrop-filter: blur(10px);
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    .achievement-card::after {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: linear-gradient(135deg, rgba(220, 20, 60, 0.1), transparent);
+                        opacity: 0;
+                        transition: 0.3s ease;
+                    }
+
+                    .achievement-card:hover::after {
+                        opacity: 1;
+                    }
+
+                    .achievement-card:hover {
+                        transform: translateY(-10px);
+                        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+                    }
+
+                    .achievement-header {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 1.5rem;
+                        position: relative;
+                    }
+
+                    .achievement-icon {
+                        width: 60px;
+                        height: 60px;
+                        background: linear-gradient(135deg, crimson, #ff4757);
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-right: 1rem;
+                        font-size: 1.5rem;
+                        color: white;
+                        box-shadow: 0 5px 15px rgba(220, 20, 60, 0.3);
+                    }
+
+                    .achievement-title {
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                        color: #fff;
+                        margin-bottom: 0.5rem;
+                    }
+
+                    .achievement-subtitle {
+                        font-size: 1.1rem;
+                        color: crimson;
+                        font-weight: 500;
+                        margin-bottom: 0.5rem;
+                    }
+
+                    .achievement-description {
+                        color: #ccc;
+                        line-height: 1.6;
+                        margin-bottom: 1.5rem;
+                        flex-grow: 1;
+                    }
+
+                    .achievement-links {
+                        display: flex;
+                        gap: 1rem;
+                        flex-wrap: wrap;
+                    }
+
+                    .achievement-link {
+                        padding: 0.5rem 1rem;
+                        background: transparent;
+                        border: 2px solid crimson;
+                        color: crimson;
+                        border-radius: 25px;
+                        text-decoration: none;
+                        font-weight: 500;
+                        transition: all 0.3s ease;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                    }
+
+                    .achievement-link:hover {
+                        background: crimson;
+                        color: white;
+                        transform: translateY(-2px);
+                    }
+
+                    .achievement-badge {
+                        position: absolute;
+                        top: 1rem;
+                        right: 1rem;
+                        background: rgba(220, 20, 60, 0.2);
+                        color: crimson;
+                        padding: 0.3rem 0.8rem;
+                        border-radius: 15px;
+                        font-size: 0.8rem;
+                        font-weight: 500;
+                    }
+
+                    .achievement-grid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                        gap: 1rem;
+                        margin-top: 2rem;
+                    }
+
+                    .achievement-item {
+                        background: rgba(255, 255, 255, 0.05);
+                        padding: 1rem;
+                        border-radius: 15px;
+                        text-align: center;
+                        transition: all 0.3s ease;
+                    }
+
+                    .achievement-item:hover {
+                        transform: translateY(-5px);
+                        background: rgba(220, 20, 60, 0.1);
+                    }
+
+                    .achievement-item i {
+                        font-size: 2rem;
+                        color: crimson;
+                        margin-bottom: 0.5rem;
+                    }
+
+                    .achievement-item h4 {
+                        color: #fff;
+                        margin-bottom: 0.5rem;
+                    }
+
+                    .achievement-item p {
+                        color: #ccc;
+                        font-size: 0.9rem;
+                    }
+                </style>
+
+                <div class="achievements-container">
+                    <div class="achievement-card">
+                        <div class="achievement-badge">2nd Prize</div>
+                        <div class="achievement-header">
+                            <div class="achievement-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div>
+                                <h3 class="achievement-title">GDG DevXplore Hackathon</h3>
+                                <div class="achievement-subtitle">Google Developer Group, Nellore</div>
+                            </div>
+                        </div>
+                        <p class="achievement-description">
+                            Led team SSC_DEV_HACK to win 2nd Prize (₹20,000) for developing a Virtual Shopping Assistant 
+                            with recommendation system, voice-based interaction, and notification features. 
+                            Donated the entire prize money to Student Service Community for social service activities.
+                        </p>
+                        <div class="achievement-links">
+                            <a href="https://www.linkedin.com/posts/maheswaram-subrahmanyam-361238275_rs20000-hackathon-teamwork-activity-7281782386101493760-MymN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEMh0vkBOxt4pVgEjuLukfaFJuVEmwysC20" class="achievement-link" target="_blank">
+                                <i class="fab fa-linkedin"></i> Post
+                            </a>
+                            <a href="https://www.linkedin.com/posts/maheswaram-subrahmanyam-361238275_certificate-for-2nd-place-in-gdg-devxplore-activity-7287142065128255489-RmNN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEMh0vkBOxt4pVgEjuLukfaFJuVEmwysC20" class="achievement-link" target="_blank">
+                                <i class="fas fa-certificate"></i> Certificate
+                            </a>
+                            <a href="https://maheswaramsubrahmanyam.github.io/SSC_DEV_HACK_RUNNERS/" class="achievement-link" target="_blank">
+                                <i class="fas fa-blog"></i> Blog
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card">
+                        <div class="achievement-badge">1st Prize</div>
+                        <div class="achievement-header">
+                            <div class="achievement-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div>
+                                <h3 class="achievement-title">National Coding Competition</h3>
+                                <div class="achievement-subtitle">RK Engineering College</div>
+                            </div>
+                        </div>
+                        <p class="achievement-description">
+                            Secured 1st Prize in the National Coding Competition, showcasing exceptional 
+                            programming skills and problem-solving abilities.
+                        </p>
+                        <div class="achievement-links">
+                            <a href="https://www.linkedin.com/posts/maheswaram-subrahmanyam-361238275_codingcompetition-winner-achievement-activity-7309589843632603137-0JIL?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEMh0vkBOxt4pVgEjuLukfaFJuVEmwysC20" class="achievement-link" target="_blank">
+                                <i class="fab fa-linkedin"></i> Post
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card">
+                        <div class="achievement-badge">Multiple Awards</div>
+                        <div class="achievement-header">
+                            <div class="achievement-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div>
+                                <h3 class="achievement-title">VKR Fest Achievements</h3>
+                                <div class="achievement-subtitle">College Fest</div>
+                            </div>
+                        </div>
+                        <p class="achievement-description">
+                            Won multiple awards including 1st Prize in Poster Presentation and 
+                            2nd Prize in Coding & Technical Quiz, demonstrating versatility in 
+                            both technical and creative domains.
                         </p>
                     </div>
                 </div>
-                <div class="box m-1 mb-4">
 
-                    <div class="content">
-                        <h1>Volunteers for SUN.</h1>
-                        <span>Student Union for Nation</span>
-                        <h6>Volunteering for SUN throughout Krishna
-                            District.</h6>
-
-                        <p class="font-size">As a member of the Student Union
-                            for Nation (SUN), I contributed to various
-                            initiatives aimed at student growth. SUN organized
-                            social services like food donations, student
-                            adoption, and education for orphans, along with
-                            birthday celebrations for those in need. Our efforts
-                            focused on making a positive impact in the
-                            community.
-
-                        </p>
+                <div class="achievement-grid">
+                    <div class="achievement-item">
+                        <i class="fas fa-paint-brush"></i>
+                        <h4>Painting Awards</h4>
+                        <p>7+ Awards in Various Competitions</p>
+                    </div>
+                    <div class="achievement-item">
+                        <i class="fas fa-chess"></i>
+                        <h4>Chess Championships</h4>
+                        <p>5+ Winner Titles</p>
                     </div>
                 </div>
             </div>
-            <div class="max-width mt-4">
-                <h2 class="title">My Experiences</h2>
-                <div class="serv-content">
+        </section>
+       
+        <!-- leadership section start -->
+        <section class="leadership" id="leadership">
+            <div class="max-width">
+                <h2 class="title">Leadership & Community</h2>
+                <style>
+                    .leadership-container {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                        gap: 2rem;
+                        padding: 2rem;
+                        max-width: 1200px;
+                        margin: 0 auto;
+                    }
 
+                    .leadership-card img {
+                      width: 100%;
+                      height: auto;
+                      max-height: 200px;
+                      object-fit: cover;
+                      border-radius: 15px;
+                      margin-bottom: 1.2rem;
+                      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                    }
+                    .leadership-swiper {
+                     width: 100%;
+                       height: auto;
+                       margin-bottom: 1.2rem;
+                       border-radius: 15px;
+                       overflow: hidden;
+                       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                    }
+
+                    .leadership-swiper img {
+                        width: 100%;
+                        height: 200px;
+                        object-fit: cover;
+                        border-radius: 0;
+                    }
+
+
+
+
+
+
+
+
+                    .leadership-card {
+                        background: rgba(255, 255, 255, 0.05);
+                        border-radius: 20px;
+                        padding: 2rem;
+                        position: relative;
+                        overflow: hidden;
+                        transition: all 0.3s ease;
+                        backdrop-filter: blur(10px);
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                    }
+
+                    .leadership-card:hover {
+                        transform: translateY(-10px);
+                        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+                    }
+
+                    .leadership-header {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 1.5rem;
+                    }
+
+                    .leadership-icon {
+                        width: 60px;
+                        height: 60px;
+                        background: linear-gradient(135deg, crimson, #ff4757);
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-right: 1rem;
+                        font-size: 1.5rem;
+                        color: white;
+                        box-shadow: 0 5px 15px rgba(220, 20, 60, 0.3);
+                    }
+
+                    .leadership-title {
+                        font-size: 1.3rem;
+                        font-weight: 600;
+                        color: #fff;
+                        margin-bottom: 0.5rem;
+                    }
+
+                    .leadership-organization {
+                        font-size: 1rem;
+                        color: crimson;
+                        font-weight: 500;
+                    }
+
+                    .leadership-description {
+                        color: #ccc;
+                        line-height: 1.6;
+                        margin-bottom: 1.5rem;
+                    }
+
+                    .leadership-link {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                        padding: 0.5rem 1rem;
+                        background: transparent;
+                        border: 2px solid crimson;
+                        color: crimson;
+                        border-radius: 25px;
+                        text-decoration: none;
+                        font-weight: 500;
+                        transition: all 0.3s ease;
+                    }
+
+                    .leadership-link:hover {
+                        background: crimson;
+                        color: white;
+                        transform: translateY(-2px);
+                    }
+
+                    .leadership-badge {
+                        position: absolute;
+                        top: 1rem;
+                        right: 1rem;
+                        background: rgba(220, 20, 60, 0.2);
+                        color: crimson;
+                        padding: 0.3rem 0.8rem;
+                        border-radius: 15px;
+                        font-size: 0.8rem;
+                        font-weight: 500;
+                    }
+                </style>
+
+                <div class="leadership-container">
+                    <div class="leadership-card">
+                        <div class="leadership-badge">Current Role</div>
+                        <div class="leadership-header">
+                            <div class="leadership-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div>
+                                <h3 class="leadership-title">Coding Club President</h3>
+                                <div class="leadership-organization">College Leadership</div>
+                            </div>
+                        </div>
+                        <div class="swiper leadership-swiper">
+                         <div class="swiper-wrapper">
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1750082729/zgy8vuhtghyo7yh6z0x2.png" alt="Slide 1" /></div>
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1750082724/lgbro2najuwra2l63kv3.png" alt="Slide 2" /></div>
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1750082724/cqxtiwoavg7rpa1ypsjd.png" alt="Slide 3" /></div>
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1750082723/o7zritqx2lfm6st1z79i.png" alt="Slide 3" /></div>
+
+                         </div>
+                       </div>
+                        <p class="leadership-description">
+                            Mentored juniors to enhance their coding skills through regular sessions and workshops.
+                            Organized coding competitions and hackathons to foster technical growth.
+                        </p>
+                        <a href="https://www.linkedin.com/posts/maheswaram-subrahmanyam-361238275_exited-to-share-this-news-that-i-have-conducted-activity-7179815428938981377-kFKy" class="leadership-link" target="_blank">
+                            <i class="fab fa-linkedin"></i> View Post
+                        </a>
+                    </div>
+
+                    <div class="leadership-card">
+                        <div class="leadership-badge">Founder</div>
+                        <div class="leadership-header">
+                            <div class="leadership-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div>
+                                <h3 class="leadership-title">Student Service Community</h3>
+                                <div class="leadership-organization">Community Leadership</div>
+                            </div>
+                        </div>
+                        <div class="swiper leadership-swiper">
+                         <div class="swiper-wrapper">
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1741622736/Maharasta_HACKFUSION/IMG_20250221_193445942_HDR_zsier2.jpg" alt="Slide 1" /></div>
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1741622763/Maharasta_HACKFUSION/SSC_backpic_fm7y1g.jpg" alt="Slide 2" /></div>
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1736059670/SSC_DEV_HACK_NELLORE_NARAYANA_ENG_CLG/IMG-20250105-WA0046_bb2oc3.jpg" alt="Slide 3" /></div>
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1738472475/VR%20HACKATHON%20PHOTSO%202025%20JAN%2023rd%2024th/IMG-20250125-WA0015_pwroi4.jpg" alt="Slide 3" /></div>
+
+                         </div>
+                       </div>
+                        <p class="leadership-description">
+                            Founded and lead a community providing free training and support to fellow students.
+                            Organized workshops and mentorship programs for skill development.
+                        </p>
+                        <a href="https://chat.whatsapp.com/H3AgvLp9axaEb2WUBbI6a1" class="leadership-link" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Join Community
+                        </a>
+                    </div>
+
+                    <div class="leadership-card">
+                        <div class="leadership-badge">Organizer</div>
+                        <div class="leadership-header">
+                            <div class="leadership-icon">
+                                <i class="fas fa-microphone-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="leadership-title">TEDx Organizer</h3>
+                                <div class="leadership-organization">AIM TEDx VVGV 2025</div>
+                            </div>
+                        </div>
+                        <div class="swiper leadership-swiper">
+                         <div class="swiper-wrapper">
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1750082522/wcgjbpk3klfwdaz3k98i.png" alt="Slide 1" /></div>
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1750082522/wcgjbpk3klfwdaz3k98i.png" alt="Slide 2" /></div>
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1750082522/wcgjbpk3klfwdaz3k98i.png" alt="Slide 3" /></div>
+                         </div>
+                       </div>
+                        <p class="leadership-description">
+                            Leading the organization of the AIM TEDx event at VVGV, scheduled for 2025.
+                            Coordinating speakers, logistics, and event planning.
+                        </p>
+                        <a href="https://www.ted.com/profiles/49237308" class="leadership-link" target="_blank">
+                            <i class="fab fa-ted"></i> TED Profile
+                        </a>
+                    </div>
+
+                    <div class="leadership-card">
+                        <div class="leadership-badge">Host</div>
+                        <div class="leadership-header">
+                            <div class="leadership-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div>
+                                <h3 class="leadership-title">Webinar Host</h3>
+                                <div class="leadership-organization">Technical Training</div>
+                            </div>
+                        </div>
+                        <div class="swiper leadership-swiper">
+                         <div class="swiper-wrapper">
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1721547455/IMG_20240719_113232_swesau.jpg" alt="Slide 1" /></div>
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1750082723/bugs4of8t6tg09ejezss.png" alt="Slide 2" /></div>
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1750065656/b0gxi4mzz56me4tavzwm.jpg" alt="Slide 3" /></div>
+                         </div>
+                       </div>
+                        <p class="leadership-description">
+                            Organized and led webinars on ML, Data Analytics, Python, and Prompt Engineering
+                            in various colleges, reaching hundreds of students.
+                        </p>
+                        <a href="https://www.linkedin.com/posts/maheswaram-subrahmanyam-361238275_python-machinelearning-datascience-activity-7219993288450224129-eaQc" class="leadership-link" target="_blank">
+                            <i class="fab fa-linkedin"></i> View Session
+                        </a>
+                    </div>
+
+                    <div class="leadership-card">
+                        <div class="leadership-badge">Volunteer</div>
+                        <div class="leadership-header">
+                            <div class="leadership-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <div>
+                                <h3 class="leadership-title">SUN Social Services</h3>
+                                <div class="leadership-organization">Community Service</div>
+                            </div>
+                        </div>
+                        <div class="swiper leadership-swiper">
+                         <div class="swiper-wrapper">
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1734144776/BLANKETS%20DISTUBUTION%20AT%20GUDIVADA/IMG-20241213-WA0084_awr1yj.jpg" alt="Slide 1" /></div>
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1731595362/SSC%20AND%20SUN%20EVENT%20PHOTOS/IMG-20241114-WA0160_ya0hwc.jpg" alt="Slide 1" /></div>
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1750064375/wt6b4dhhxmiksejtnuli.jpg" alt="Slide 1" /></div>
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1750065657/pg9cilku3xjlp4q0knzb.jpg" alt="Slide 1" /></div>
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1734144832/BLANKETS%20DISTUBUTION%20AT%20GUDIVADA/IMG-20241213-WA0108_tvcbns.jpg" alt="Slide 2" /></div>
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1734145110/BLANKETS%20DISTUBUTION%20AT%20GUDIVADA/BLANKETS%20DISTUBUTION%20AT%20MACHILIPATNAM/IMG-20241214-WA0005_gve0v6.jpg" alt="Slide 3" /></div>
+                         </div>
+                       </div>
+                        <p class="leadership-description">
+                            Active volunteer in community-focused student initiatives, organizing events
+                            and programs for social welfare and student development.
+                        </p>
+                        <a href="https://www.linkedin.com/posts/maheswaram-subrahmanyam-361238275_childrensdaycelebration-inspiringyoungminds-activity-7262760783506210816-hgwR" class="leadership-link" target="_blank">
+                            <i class="fab fa-linkedin"></i> View Activities
+                        </a>
+                    </div>
+
+                    <div class="leadership-card">
+                        <div class="leadership-badge">Volunteer</div>
+                        <div class="leadership-header">
+                            <div class="leadership-icon">
+                                <i class="fas fa-vote-yea"></i>
+                            </div>
+                            <div>
+                                <h3 class="leadership-title">AP Elections 2024</h3>
+                                <div class="leadership-organization">Electoral Support</div>
+                            </div>
+                        </div>
+                        <div class="swiper leadership-swiper">
+                         <div class="swiper-wrapper">
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1750082262/sooxs9st2sryp9qn1nag.jpg" alt="Slide 1" /></div>
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1750082262/hcl9y4k9jf9zjvxe5iv1.jpg" alt="Slide 2" /></div>
+                           <div class="swiper-slide"><img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1750082262/tkousj0zw6zffyumxbob.jpg" alt="Slide 3" /></div>
+                         </div>
+                       </div>
+                        <p class="leadership-description">
+                            Contributed to electoral support and awareness during the 2024 AP Elections,
+                            ensuring smooth democratic processes and voter education.
+                        </p>
+                        <a href="https://www.linkedin.com/posts/maheswaram-subrahmanyam-361238275_nss-duty-andra-pradesh-state-elections-2024-activity-7196450641357979650-seQ7" class="leadership-link" target="_blank">
+                            <i class="fab fa-linkedin"></i> View Experience
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col">
-                        <div class="card">
-                            <img
-                                src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1725533485/data-science-2_eycrud.jpg"
-                                class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title heading-5">Data
-                                    Science</h5>
-                                <p class="card-text para"><span
-                                        class="link2">Multiple Disease
-                                        Prediction System:</span> Developed a
-                                    system using Python and Streamlit to predict
-                                    diseases like diabetes, heart disease, and
-                                    Parkinson's using machine learning
-                                    models.<br>
-                                    <span class="link2">Workshops &
-                                        Webinars:</span> Conducted workshops on
-                                    Data Science, Machine Learning, and Python,
-                                    both online and ofline workshpos, webinars were
-                                    conducted, resived lot's of positive response form
-                                    students regarding the workshops, webinars.
-                                      <br>
-                                    <span class="link2"> Community
-                                        Training:</span> As the founder of the
-                                    Student Service Community (SSC), you’ve led
-                                    several training sessions, including Data
-                                    Science, helping students develop their
-                                    skills.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img
-                                src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1725533594/web_development_images_hc0bmy.jpg"
-                                class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title heading-5">Web
-                                    Development</h5>
-                                <p class="card-text para"> <span
-                                        class="link2">Personal Portfolio
-                                        Website:</span> Created a personal
-                                    portfolio using HTML, CSS, and JavaScript,
-                                    with responsive design, interactive
-                                    elements, and a clean UI to showcase your
-                                    skills and projects.<br>
-                                    <span class="link2">Workshops:</span> Led
-                                    web development workshops, providing
-                                    assignments and quizzes to help students
-                                    learn web technologies.<br>
-                                    <span class="link2">Project
-                                        Experience:</span>Built dynamic web
-                                    applications using JavaScript and DOM
-                                    events, including form validation, data
-                                    filtering, and responsive layouts with CSS
-                                    Grid and Flexbox. Integrated APIs and AJAX
-                                    for real-time data and enhanced user
-                                    interaction.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img
-                                src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1725533513/artificial-intelligence-is-transforming-the-education-industry_fhwdgr.jpg"
-                                class="card-img-top" alt>
-                            <div class="card-body">
-                                <h5 class="card-title heading-5">Machine
-                                    Learning</h5>
-                                <p class="card-text para"><span
-                                        class="link2">Internship at BIST
-                                        Technologies:</span> Gained hands-on
-                                    experience in
-                                    machine learning algorithms, model building,
-                                    and deployment during your internship from
-                                    May 2024 to July 2024.<br>
-                                    <span class="link2">Real-Time
-                                        Applications:</span> Demonstrated
-                                    real-time applications of PyWhatKit and
-                                    machine learning during workshops,
-                                    showcasing automation and backend
-                                    development in Python.<br>
-                                    <span class="link2">Collaborative
-                                        Projects:</span> Worked on various
-                                    machine learning projects, contributing to
-                                    team goals and enhancing your technical
-                                    skills. </p>
-                            </div>
-                        </div>
-                    </div>
+        </section>
 
-                </div>
-            </div>
+        <!-- python data analytics videos -->
+        <section id="courses" class="py-5" style="background-color: #000000;">
+  <div class="container">
+    <h2 class="text-center text-white mb-5">Free Python & Data Analytics Classes</h2>
+    <div class="row g-4">
+
+      <!-- Template: Repeat this block for each day -->
+      <!-- Day 1 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow text-white" style="border-radius: 20px; overflow: hidden; background-color: #111;">
+          <div class="card-img-top ratio ratio-16x9">
+            <iframe
+              src="https://www.youtube.com/embed/s00dKmMGdaQ"
+              title="Day 1: Python Basics"
+              allowfullscreen
+              style="width: 100%; height: 100%; border: none;"
+            ></iframe>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Day 1: Python Basics</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 2 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow text-white" style="border-radius: 20px; overflow: hidden; background-color: #111;">
+          <div class="card-img-top ratio ratio-16x9">
+            <iframe
+              src="https://www.youtube.com/embed/xqffvyV7kDc"
+              title="Day 2: Data Analysis with Pandas"
+              allowfullscreen
+              style="width: 100%; height: 100%; border: none;"
+            ></iframe>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Day 2: Data Analysis with Pandas</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 3 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow text-white" style="border-radius: 20px; overflow: hidden; background-color: #111;">
+          <div class="card-img-top ratio ratio-16x9">
+            <iframe
+              src="https://www.youtube.com/embed/9_fJAVsG6Q4"
+              title="Day 3: Exploratory Data Analysis"
+              allowfullscreen
+              style="width: 100%; height: 100%; border: none;"
+            ></iframe>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Day 3: Exploratory Data Analysis</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow text-white" style="border-radius: 20px; overflow: hidden; background-color: #111;">
+          <div class="card-img-top ratio ratio-16x9">
+            <iframe
+              src="https://www.youtube.com/embed/9_fJAVsG6Q4"
+              title="Day 3: Exploratory Data Analysis"
+              allowfullscreen
+              style="width: 100%; height: 100%; border: none;"
+            ></iframe>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Day 4: Exploratory Data Analysis</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow text-white" style="border-radius: 20px; overflow: hidden; background-color: #111;">
+          <div class="card-img-top ratio ratio-16x9">
+            <iframe
+              src="https://www.youtube.com/embed/9_fJAVsG6Q4"
+              title="Day 3: Exploratory Data Analysis"
+              allowfullscreen
+              style="width: 100%; height: 100%; border: none;"
+            ></iframe>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Day 5: Exploratory Data Analysis</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow text-white" style="border-radius: 20px; overflow: hidden; background-color: #111;">
+          <div class="card-img-top ratio ratio-16x9">
+            <iframe
+              src="https://youtu.be/fqo9M99LamM?si=eAynVs6Q0PKw9iuC"
+              title="Day 3: Exploratory Data Analysis"
+              allowfullscreen
+              style="width: 100%; height: 100%; border: none;"
+            ></iframe>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Day 6: Exploratory Data Analysis</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow text-white" style="border-radius: 20px; overflow: hidden; background-color: #111;">
+          <div class="card-img-top ratio ratio-16x9">
+            <iframe
+              src="https://youtu.be/ILg_HyPP08M?si=6X5vmFKCQCO5jQwM"
+              title="Day 3: Exploratory Data Analysis"
+              allowfullscreen
+              style="width: 100%; height: 100%; border: none;"
+            ></iframe>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Day 7: Exploratory Data Analysis</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow text-white" style="border-radius: 20px; overflow: hidden; background-color: #111;">
+          <div class="card-img-top ratio ratio-16x9">
+            <iframe
+              src="https://youtu.be/qsd1_Rinx8s?si=ykRpWWuUh7ADkLBS"
+              title="Day 3: Exploratory Data Analysis"
+              allowfullscreen
+              style="width: 100%; height: 100%; border: none;"
+            ></iframe>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Day 8: Exploratory Data Analysis</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow text-white" style="border-radius: 20px; overflow: hidden; background-color: #111;">
+          <div class="card-img-top ratio ratio-16x9">
+            <iframe
+              src="https://youtu.be/yIarws4G-Nw?si=IOZ9KhpZF5y4h4nh"
+              title="Day 3: Exploratory Data Analysis"
+              allowfullscreen
+              style="width: 100%; height: 100%; border: none;"
+            ></iframe>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Day 9: Exploratory Data Analysis</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
         </section>
 
         <!-- skills section start -->
@@ -1557,32 +2583,18 @@ footer .wave#wave4
                 <h2 class="title">My skills</h2>
                 <div class="skills-content">
                     <div class="column left">
-                        <div class="text">My creative skills &
-                            experiences.</div>
-                        <p>Since beginning my career, I’ve gained two years of
-                            experience teaching Python and recent technologies,
-                            having successfully trained multiple batches of
-                            students. <br><br> I am a web developer with a solid
-                            background in front-end technologies (HTML, CSS,
-                            JavaScript) and have worked on various machine
-                            learning projects. Currently, I am interning as a
-                            MERN stack developer at <span
-                                class="link2">Zithara.Ai</span> <br><br>
+                        <div class="text">My Creative Skills & Experiences</div>
+                        <p>I'm Maheswaram M V Subrahmanyam, a passionate and versatile tech enthusiast with over two years of experience teaching Python and emerging technologies. I've successfully mentored multiple student batches, focusing on real-time applications and hands-on learning.<br><br>
 
-                            My skill set includes core Python and Java, with
-                            basic knowledge in ethical hacking using tools like
-                            Kali Linux and Maltego. I am also proficient in SQL
-                            and GitHub. Additionally, I hold numerous
-                            certifications in both tech and non-tech fields,
-                            including hackathons, presentations, chess
-                            tournaments, painting competitions, and essay
-                            writing. <br><br>
+                        Currently, I'm interning as a MERN Stack Developer at <span class="link2">Zithara.Ai</span>, while also working as a Python & Data Analytics Trainer at <span class="link2">Risk Guard Enterprise Solutions</span> and serving as an IT Intern in the X-Ray Department at <span class="link2">INDO-MIM Limited</span>, Bangalore. These roles have allowed me to deepen my expertise in web development, data analytics, and IT operations.<br><br>
 
-                            Visit my<a
-                                href="https://www.linkedin.com/in/maheswaram-subrahmanyam-361238275/"
-                                target="_blank" id="link">LinkedIn</a>for more
-                            details<a href="#contact" id="link">contact</a>me.
+                        I possess a strong foundation in front-end technologies (HTML, CSS, JavaScript) and have built several impactful machine learning projects, including a Multiple Disease Prediction System. My technical toolkit includes Core Python, Java, SQL, GitHub, and basic ethical hacking skills using Kali Linux and Maltego.<br><br>
 
+                        
+
+                        My journey is driven by a passion for technology, continuous learning, and a commitment to community through leadership roles like Coding Club President and Founder of the Student Service Community.<br><br>
+
+                        Visit my <a href="https://www.linkedin.com/in/maheswaram-subrahmanyam-361238275/" target="_blank" id="link">LinkedIn</a> for more details or <a href="#contact" id="link">contact</a> me.
                         </p>
                         <a href="#contact">Learn more</a>
                     </div>
@@ -1641,64 +2653,97 @@ footer .wave#wave4
                 <div class="carousel owl-carousel">
                     <div class="card">
                         <div class="box">
-                            <img
-                                src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1725536503/Food_Munch_uukbl8.jpg"
-                                alt="img">
-                            <div class="text">Food Munch Resturant</div>
-                            <p>Developed a restaurant webpage for "Food Munch"
-                                using HTML
-                                and CSS, featuring an elegant design to showcase
-                                menus, services, and customer reviews. Made the
-                                webpage responsive to ensure a seamless
-                                experience across all devices, from desktops to
-                                smartphones.</p>
-                            <a
-                                href="https://github.com/maheswaramsubrahmanyam/foodMunch"
-                                class="project" target="_blank">View Project</a>
+                            <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1725536503/Food_Munch_uukbl8.jpg" alt="Virtual Shopping Assistant">
+                            <div class="text">Virtual Shopping Assistant</div>
+                            <p>Developed a full-stack AI assistant that guides users through online shopping with smart suggestions and purchase support. Features include voice/text chat interface, intelligent product recommendations, and seamless purchase flow.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">AI</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/maheswaramsubrahmanyam/Virtual_Shopping_Assistant/tree/main/virtual-shop-assistant" class="project" target="_blank">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                                <a href="https://youtu.be/t49Yi-LmJlM?si=OXP-MedFZWgBTyq7" class="project" target="_blank">
+                                    <i class="fas fa-video"></i> Demo
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="card">
                         <div class="box">
-                            <img
-                                src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1723161872/netflix_image_xm5wfe.jpg"
-                                alt="img">
-                            <div class="text">Netflix-WebApplication</div>
-                            <p>Used HTML CSS & JavaScript for this dynamic
-                                application and
-                                responsive overthe all devices.</p>
-                            <a
-                                href="https://github.com/maheswaramsubrahmanyam/Netflix-WebApplication"
-                                class="project"
-                                target="_blank">View project</a>
+                            <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1723161872/netflix_image_xm5wfe.jpg" alt="Multiple Disease Prediction System">
+                            <div class="text">Multiple Disease Prediction System</div>
+                            <p>Built a comprehensive web application using Python and Streamlit that predicts multiple diseases (Diabetes, Heart Disease, and Parkinson's) based on user inputs through trained machine learning models.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Streamlit</span>
+                                <span class="tech-tag">Scikit-learn</span>
+                                <span class="tech-tag">ML</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/maheswaramsubrahmanyam/Multi-disease-prediction-model" class="project" target="_blank">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                                <a href="https://youtu.be/emh3Yc1B1XU?si=LVKDYmzdXBJoUdjQ" class="project" target="_blank">
+                                    <i class="fas fa-video"></i> Demo
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="card">
                         <div class="box">
-                            <img
-                                src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1725536947/power-bi-dashboard2_c9s90x.png"
-                                alt="img">
-                            <div class="text">Power BI Sales dashboard Project for
-                                Beginners</div>
-                            <p>Designed a power bi dashboard for Real Mart Store to track and
-                                analyze the online sales data acorss India.</p>
-                            <a href="https://www.linkedin.com/posts/maheswaram-subrahmanyam-361238275_data-analysis-dashboard-case-studies-activity-7157338876708093952-RyWD?utm_source=share&utm_medium=member_desktop"
-                                class="project" target="_blank">View Project</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="box">
-                            <img
-                                src="https://www.nomidl.com/wp-content/uploads/2022/09/image-140.png"
-                                alt="img">
-                            <div class="text">Multi
-                                Desise Prediction Web Application</div>
-                            <p>Used multiple machine learning models to predict the desise based on
-                                trainde model.</p>
-                            <a href="https://github.com/maheswaramsubrahmanyam/public_web_app" class="project"
-                                target="_blank">View Project</a>
+                            <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1725536947/power-bi-dashboard2_c9s90x.png" alt="Power BI Dashboard">
+                            <div class="text">Power BI Sales Dashboard</div>
+                            <p>Designed an interactive Power BI dashboard for Real Mart Store to track and analyze online sales data across India, providing actionable insights for business growth.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">Data Analytics</span>
+                                <span class="tech-tag">Business Intelligence</span>
+                            </div>
+                            <a href="https://www.linkedin.com/posts/maheswaram-subrahmanyam-361238275_data-analysis-dashboard-case-studies-activity-7157338876708093952-RyWD" class="project" target="_blank">View Project</a>
                         </div>
                     </div>
                 </div>
+                <style>
+                    .tech-stack {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 0.5rem;
+                        margin: 1rem 0;
+                    }
+                    .tech-tag {
+                        background: rgba(220, 20, 60, 0.1);
+                        color: crimson;
+                        padding: 0.3rem 0.8rem;
+                        border-radius: 15px;
+                        font-size: 0.8rem;
+                        font-weight: 500;
+                    }
+                    .project-links {
+                        display: flex;
+                        gap: 1rem;
+                        justify-content: center;
+                    }
+                    .project-links .project {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                    }
+                    .project-links .project i {
+                        font-size: 1.1em;
+                    }
+                    .teams .carousel .card .box {
+                        display: flex;
+                        flex-direction: column;
+                        height: 100%;
+                    }
+                    .teams .carousel .card .box p {
+                        flex-grow: 1;
+                        margin-bottom: 1rem;
+                    }
+                </style>
             </div>
         </section>
 
@@ -1836,7 +2881,7 @@ footer .wave#wave4
             preogressbar.style.height = progress + "%";
             percent.innerHTML = "Page Scrolled " + Math.round(progress)+ "%"
         }
-    </script>
+        </script>
         <!-- pre loader js  -->
         <script>
       var loader = document .getElementById("preloader");
@@ -1844,7 +2889,7 @@ footer .wave#wave4
       window.addEventListener("load", function(){
          loader.style.display = "none";
       })
-  </script>
+        </script>
         <script>
     $(document).ready(function(){
     $(window).scroll(function(){
@@ -1925,6 +2970,21 @@ footer .wave#wave4
         }
     });
 });
-  </script>
+        </script>
+        <script>
+  const sliders = document.querySelectorAll('.leadership-swiper');
+  sliders.forEach((slider) => {
+    new Swiper(slider, {
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false
+      },
+      effect: 'slide',
+      slidesPerView: 1,
+    });
+  });
+        </script>
+
     </body>
 </html>
