@@ -121,6 +121,7 @@
             0% {
                 transform: rotate(0deg);
             }
+
             100% {
                 transform: rotate(360deg);
             }
@@ -139,21 +140,26 @@
             .home .home-content .text-2 {
                 font-size: 48px;
             }
+
             .home .home-content .text-3 {
                 font-size: 28px;
             }
+
             .classbox {
                 width: 180px;
                 height: 70px;
             }
         }
+
         @media (min-width: 900px) {
             .home .home-content .text-2 {
                 font-size: 75px;
             }
+
             .home .home-content .text-3 {
                 font-size: 40px;
             }
+
             .classbox {
                 width: 200px;
                 height: 90px;
@@ -1504,6 +1510,68 @@
             font-weight: 300;
             font-size: 16px;
         }
+
+        /* Mobile-first: smaller name font size */
+        .home .text-2 {
+            font-size: 22px;
+        }
+        @media (min-width: 600px) {
+            .home .text-2 {
+                font-size: 32px;
+            }
+        }
+        @media (min-width: 900px) {
+            .home .text-2 {
+                font-size: 48px;
+            }
+        }
+        @media (min-width: 1200px) {
+            .home .text-2 {
+                font-size: 80px;
+            }
+        }
+        /* Consistent left/right padding for all sections */
+        .max-width,
+        .container,
+        .experience-container,
+        .achievements-container,
+        .leadership-container,
+        #courses .container {
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+            box-sizing: border-box;
+        }
+
+        /* Further decrease name font size for mobile-first */
+        @media (max-width: 600px) {
+            .home .text-2 {
+                font-size: 16px !important;
+            }
+        }
+
+        /* Footer social icons and text: smaller for mobile-first */
+        footer h2 {
+            font-size: 1.2em;
+        }
+        #media li {
+            width: 48px;
+            height: 48px;
+        }
+        #media li a {
+            font-size: 1.2em;
+        }
+        @media (max-width: 600px) {
+            footer h2 {
+                font-size: 1em;
+            }
+            #media li {
+                width: 32px;
+                height: 32px;
+            }
+            #media li a {
+                font-size: 1em;
+            }
+        }
     </style>
 </head>
 
@@ -2074,11 +2142,12 @@
                     display: flex;
                     gap: 1rem;
                     flex-wrap: wrap;
+                    margin-top: 1rem;
                 }
 
                 .achievement-link {
                     padding: 0.5rem 1rem;
-                    background: transparent;
+                    background: rgba(220, 20, 60, 0.1);
                     border: 2px solid crimson;
                     color: crimson;
                     border-radius: 25px;
@@ -2088,12 +2157,33 @@
                     display: flex;
                     align-items: center;
                     gap: 0.5rem;
+                    cursor: pointer;
+                    position: relative;
+                    z-index: 10;
+                    min-width: 120px;
+                    justify-content: center;
                 }
 
                 .achievement-link:hover {
                     background: crimson;
                     color: white;
                     transform: translateY(-2px);
+                    box-shadow: 0 5px 15px rgba(220, 20, 60, 0.3);
+                }
+
+                .achievement-link:focus {
+                    outline: 2px solid #fff;
+                    outline-offset: 2px;
+                    background: crimson;
+                    color: white;
+                }
+
+                .achievement-link:active {
+                    transform: translateY(0);
+                }
+
+                .achievement-link i {
+                    font-size: 1.1em;
                 }
 
                 .achievement-badge {
@@ -3040,6 +3130,35 @@
                 },
                 effect: 'slide',
                 slidesPerView: 1,
+            });
+        });
+
+        // Achievement links functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const achievementLinks = document.querySelectorAll('.achievement-link');
+            
+            achievementLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Add visual feedback
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                    
+                    // Ensure the link opens in a new tab
+                    if (this.getAttribute('target') !== '_blank') {
+                        this.setAttribute('target', '_blank');
+                    }
+                });
+                
+                // Add hover effect for better UX
+                link.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                });
             });
         });
     </script>
