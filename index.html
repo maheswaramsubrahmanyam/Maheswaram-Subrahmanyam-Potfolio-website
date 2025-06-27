@@ -92,47 +92,45 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            border-radius: 20px;
+            background: rgba(220, 20, 60, 0.1);
+            border: 2px solid crimson;
+            border-radius: 25px;
             margin-top: 30px;
             cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
         }
 
-        .classbox::before {
-            content: '';
-            position: absolute;
-            width: 48px;
-            height: 400%;
-            border-radius: 0;
-            background: linear-gradient(#00ccff, #d400d4);
-            animation: animate-rotate 4s linear infinite;
+        .classbox:hover {
+            background: crimson;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 20, 60, 0.3);
         }
 
-        .classbox::after {
-            content: '';
-            position: absolute;
-            inset: 4px;
-            background: #0e1538;
-            border-radius: 16px;
-        }
-
-        @keyframes animate-rotate {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
+        .classbox:active {
+            transform: translateY(0);
         }
 
         .classbox a {
             text-decoration: none;
-            color: #fff;
+            color: crimson;
             font-size: 1.2em;
+            font-weight: 500;
             z-index: 10;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .classbox:hover a {
+            color: white;
+        }
+
+        .classbox a i {
+            font-size: 1.1em;
         }
 
         /* Responsive adjustments */
@@ -146,8 +144,8 @@
             }
 
             .classbox {
-                width: 180px;
-                height: 70px;
+                width: 160px;
+                height: 65px;
             }
         }
 
@@ -161,8 +159,8 @@
             }
 
             .classbox {
-                width: 200px;
-                height: 90px;
+                width: 180px;
+                height: 70px;
             }
         }
 
@@ -1794,14 +1792,14 @@
                 <div class="text-3"> I'm a <span class="typing"></span></div>
                 <div class="d-flex flex-row">
                     <div class="classbox">
-                        <a href="https://www.linkedin.com/in/maheswaram-subrahmanyam-361238275/">Hire
-                            me</a>
-
+                        <a href="https://www.linkedin.com/in/maheswaram-subrahmanyam-361238275/">
+                            <i class="fas fa-briefcase"></i> Hire me
+                        </a>
                     </div>
                     <div class="classbox ml-4">
-                        <a href="https://chat.whatsapp.com/H3AgvLp9axaEb2WUBbI6a1">Join
-                            SSC</a>
-
+                        <a href="https://chat.whatsapp.com/H3AgvLp9axaEb2WUBbI6a1">
+                            <i class="fab fa-whatsapp"></i> Join SSC
+                        </a>
                     </div>
                 </div>
                 <!-- <button class="btn btn-success m-1 inline"><a href=""></a> Join SSC Community</button> -->
